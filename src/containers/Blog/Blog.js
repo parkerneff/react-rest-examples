@@ -3,8 +3,9 @@ import React, {Component} from 'react';
 
 import './Blog.css';
 import Posts from "./Posts/Posts";
-import { Route, Link } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 import NewPost from "./NewPost/NewPost";
+import FullPost from "./FullPost/FullPost";
 //import axios from "axios";
 //import axios from '../../axios';
 
@@ -25,18 +26,20 @@ class Blog extends Component {
                 <header>
                     <nav>
                         <ul>
-                            <li><Link to="/">Home</Link></li>
-                            <li><Link to={{
+                            <li><NavLink to="/" exact>Home</NavLink></li>
+                            <li><NavLink to={{
                                 pathname: "/new-post",
                                 hash: "#submit",
                                 search: "?quick-submit=true"
-                            }}>New Post</Link></li>
+                            }}>New Post</NavLink></li>
 
                         </ul>
                     </nav>
                 </header>
                 <Route path="/" exact component={Posts} />
                 <Route path="/new-post"  component={NewPost} />
+                <Route path="/:id" exact component={FullPost} />
+
 
 
             </div>
